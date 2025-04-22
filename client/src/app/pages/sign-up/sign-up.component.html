@@ -1,1 +1,82 @@
-<p>sign-up works!</p>
+<div class="sign-up">
+  <div class="sign-up-container">
+    <h2>Sign Up</h2>
+
+    <form [formGroup]="signUpForm" (ngSubmit)="onSignIn()">
+      <label for="name">Name</label>
+      <input
+        id="name"
+        type="name"
+        formControlName="name"
+        placeholder="Enter your name"
+        required
+      />
+      <div
+        *ngIf="
+          signUpForm.controls['name'].invalid &&
+          signUpForm.controls['name'].touched
+        "
+      >
+        <p *ngIf="signUpForm.controls['name'].hasError('required')">
+          Name is required
+        </p>
+        <p *ngIf="signUpForm.controls['name'].hasError('minlength')">
+          Name must be at least 2 characters
+        </p>
+        <p *ngIf="signUpForm.controls['name'].hasError('maxLength')">
+          Name must be at most 32 characters
+        </p>
+      </div>
+
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Enter your email"
+        required
+      />
+      <div
+        *ngIf="
+          signUpForm.controls['email'].invalid &&
+          signUpForm.controls['email'].touched
+        "
+      >
+        <p *ngIf="signUpForm.controls['email'].hasError('required')">
+          Email is required
+        </p>
+        <p *ngIf="signUpForm.controls['email'].hasError('email')">
+          Invalid email format
+        </p>
+      </div>
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Enter your password"
+        required
+      />
+      <div
+        *ngIf="
+          signUpForm.controls['password'].invalid &&
+          signUpForm.controls['password'].touched
+        "
+      >
+        <p *ngIf="signUpForm.controls['password'].hasError('required')">
+          Password is required
+        </p>
+        <p *ngIf="signUpForm.controls['password'].hasError('minlength')">
+          Password must be at least 6 characters
+        </p>
+      </div>
+      <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
+    </form>
+
+    <div class="sign-in-link">
+      <p>Don't have an account?</p>
+      <button (click)="goToSignIn()">Sign In</button>
+    </div>
+  </div>
+</div>

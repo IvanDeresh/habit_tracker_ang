@@ -1,1 +1,57 @@
-<p>sign-in works!</p>
+<div class="sign-in">
+  <div class="sign-in-container">
+    <h2>Sign In</h2>
+
+    <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Enter your email"
+        required
+      />
+      <div
+        *ngIf="
+          signInForm.controls['email'].invalid &&
+          signInForm.controls['email'].touched
+        "
+      >
+        <p *ngIf="signInForm.controls['email'].hasError('required')">
+          Email is required
+        </p>
+        <p *ngIf="signInForm.controls['email'].hasError('email')">
+          Invalid email format
+        </p>
+      </div>
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Enter your password"
+        required
+      />
+      <div
+        *ngIf="
+          signInForm.controls['password'].invalid &&
+          signInForm.controls['password'].touched
+        "
+      >
+        <p *ngIf="signInForm.controls['password'].hasError('required')">
+          Password is required
+        </p>
+        <p *ngIf="signInForm.controls['password'].hasError('minlength')">
+          Password must be at least 6 characters
+        </p>
+      </div>
+      <button type="submit" [disabled]="signInForm.invalid">Sign In</button>
+    </form>
+
+    <div class="sign-up-link">
+      <p>Don't have an account?</p>
+      <button (click)="goToSignUp()">Sign Up</button>
+    </div>
+  </div>
+</div>
