@@ -1,0 +1,9 @@
+<section class="carousel">
+  <h2 class="carousel__title">Habits</h2>
+  <div class="carousel__track">
+    <div class="carousel__item" *ngFor="let habit of habits">
+      <h3>{{ habit.title }}</h3>
+      <p>{{ habit.description }}</p>
+    </div>
+  </div>
+</section>

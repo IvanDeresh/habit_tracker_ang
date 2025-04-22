@@ -1,0 +1,32 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-block: 15rem;
+  background-image: url("../../../../../assets/img/beautiful-smiling-brunette-girl-pointing-fingers-your-logo-showing-something-center.jpg");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); // затемнення
+    z-index: 1;
+  }
+
+  &__text {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+    max-width: 800px;
+    text-align: center;
+    padding: 2rem;
+  }
+}
